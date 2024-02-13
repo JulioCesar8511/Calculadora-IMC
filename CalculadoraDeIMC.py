@@ -1,33 +1,36 @@
 def calcular_imc(peso, estatura):
     return peso / (estatura ** 2)
 
-def obtener_numero(mensaje):
+def validar_numero(mensaje):
     while True:
-        try:
-            numero = float(input(mensaje))
-            return numero
-        except ValueError:
-            print("Por favor, asegúrate de ingresar un valor numérico válido.")
+        entrada = input(mensaje)
+        if entrada.isdigit():
+            return int(entrada)
+        else:
+            print("Por favor, introduce un número válido.")
 
-def main():
-    nombre = input("Por favor, ingresa tu nombre: ")
-    apellido_paterno = input("Ingresa tu apellido paterno: ")
-    apellido_materno = input("Ingresa tu apellido materno: ")
+def validar_texto(mensaje):
+    while True:
+        entrada = input(mensaje)
+        if entrada.isalpha():
+            return entrada
+        else:
+            print("Por favor, introduce un texto válido.")
 
-    edad = obtener_numero("Ingresa tu edad: ")
-    peso = obtener_numero("Ingresa tu peso en kg: ")
-    estatura = obtener_numero("Ingresa tu estatura en metros: ")
+nombre = validar_texto("Introduce tu nombre: ")
+apellido_paterno = validar_texto("Introduce tu apellido paterno: ")
+apellido_materno = validar_texto("Introduce tu apellido materno: ")
+edad = validar_numero("Introduce tu edad: ")
+peso = validar_numero("Introduce tu peso en kg: ")
+estatura = validar_numero("Introduce tu estatura en metros: ")
 
-    imc = calcular_imc(peso, estatura)
+imc = calcular_imc(peso, estatura)
 
-    print("\nDatos personales:")
-    print("Nombre:", nombre)
-    print("Apellido paterno:", apellido_paterno)
-    print("Apellido materno:", apellido_materno)
-    print("Edad:", edad)
-    print("Peso:", peso, "kg")
-    print("Estatura:", estatura, "m")
-    print("Índice de Masa Corporal (IMC):", imc)
-
-if __name__ == "__main__":
-    main()
+print("\nDatos personales:")
+print("Nombre:", nombre)
+print("Apellido Paterno:", apellido_paterno)
+print("Apellido Materno:", apellido_materno)
+print("Edad:", edad)
+print("Peso:", peso, "kg")
+print("Estatura:", estatura, "m")
+print("Índice de Masa Corporal (IMC):", imc)
